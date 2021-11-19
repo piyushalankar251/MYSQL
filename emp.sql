@@ -1,0 +1,3 @@
+SELECT name FROM Employee 
+WHERE MONTHS<10 AND SALARY>2000 
+ORDER BY employee_id;

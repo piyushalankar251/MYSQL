@@ -1,0 +1,4 @@
+CREATE DATABASE mydata;
+USE mydata;
+CREATE TABLE login (name VARCHAR(128), email VARCHAR(128), password VARCHAR(128));
+INSERT INTO login VALUES('UCHIHA' , 'MADARA');

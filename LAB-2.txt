@@ -1,0 +1,248 @@
+SQL> SELECT CNAME FROM CUSTOMER1929100 WHERE CITY='NAGPUR';
+
+CNAME                                                                           
+--------------------                                                            
+MADHURI                                                                         
+PARMOD                                                                          
+
+SQL> SELECT CNAME FROM DEPOSIT1929100 WHERE ADATE>'17-NOV-95';
+
+CNAME                                                                           
+--------------------                                                            
+SUNIL                                                                           
+MADHURI                                                                         
+PRAMOD                                                                          
+SANDIP                                                                          
+
+
+
+SQL> SELECT ACTNO FROM DEPOSIT1929100 WHERE ADATE>'01-DEC-95' AND ADATE<'01-JUN-96';
+
+ACTNO                                                                           
+-----                                                                           
+101                                                                             
+103                                                                             
+105                                                                             
+
+SQL> SELECT *FROM DEPOSIT1929100 WHERE CNAME LIKE 'C%';
+
+no rows selected
+
+SQL> SELECT *FROM DEPOSIT1929100 WHERE CNAME LIKE '_U%';
+
+ACTNO CNAME                BNAME                    AMOUNT ADATE                
+----- -------------------- -------------------- ---------- ---------            
+101   SUNIL                MGROAD                     5000 04-JAN-96            
+
+SQL> SELECT *FROM DEPOSIT1929100 WHERE BNAME IN('CHANDNI','MGROAD');
+
+ACTNO CNAME                BNAME                    AMOUNT ADATE                
+----- -------------------- -------------------- ---------- ---------            
+101   SUNIL                MGROAD                     5000 04-JAN-96            
+103   MADHURI              CHANDNI                    1200 17-DEC-95            
+104   PRAMOD               MGROAD                     3000 27-MAR-97            
+
+SQL> SELECT *FROM DEPOSIT1929100 WHERE BNAME NOT IN('CHANDNI','MGROAD');
+
+ACTNO CNAME                BNAME                    AMOUNT ADATE                
+----- -------------------- -------------------- ---------- ---------            
+100   ANIL                 VRCE                       1000 01-MAR-95            
+102   RAHUL                KAROLBAGH                  3500 17-NOV-95            
+105   SANDIP               KAROLBAGH                  2000 31-MAR-96            
+
+SQL> SELECT *FROM BORROW1929100 WHERE AMOUNT BETWEEN 2000 AND 3000;
+
+LOANN CNAME                BNAME                    AMOUNT                      
+----- -------------------- -------------------- ----------                      
+298   SUNIL                MGROAD                     3000                      
+260   MADHURI              CHANDNI                    2000                      
+
+SQL> SELECT CNAME,AMOUNT,AMOUNT/10 AS TA,AMOUNT/20 AS DA,AMOUNT/10 + AMOUNT/20 AS SUM FROM BORROW1929100;
+
+CNAME                    AMOUNT         TA         DA        SUM                
+-------------------- ---------- ---------- ---------- ----------                
+ANIL                       1000        100         50        150                
+RAHUL                      5000        500        250        750                
+SUNIL                      3000        300        150        450                
+MADHURI                    2000        200        100        300                
+PRAMOD                     8000        800        400       1200                
+
+SQL> SELECT *FROM DEPOSIT1929100 WHERE AMOUNT>1000 ORDER BY CNAME ASC;
+
+ACTNO CNAME                BNAME                    AMOUNT ADATE                
+----- -------------------- -------------------- ---------- ---------            
+103   MADHURI              CHANDNI                    1200 17-DEC-95            
+104   PRAMOD               MGROAD                     3000 27-MAR-97            
+102   RAHUL                KAROLBAGH                  3500 17-NOV-95            
+105   SANDIP               KAROLBAGH                  2000 31-MAR-96            
+101   SUNIL                MGROAD                     5000 04-JAN-96            
+
+SQL> SELECT *FROM DEPOSIT1929100 WHERE AMOUNT>1000 ORDER BY CNAME DESC;
+
+ACTNO CNAME                BNAME                    AMOUNT ADATE                
+----- -------------------- -------------------- ---------- ---------            
+101   SUNIL                MGROAD                     5000 04-JAN-96            
+105   SANDIP               KAROLBAGH                  2000 31-MAR-96            
+102   RAHUL                KAROLBAGH                  3500 17-NOV-95            
+104   PRAMOD               MGROAD                     3000 27-MAR-97            
+103   MADHURI              CHANDNI                    1200 17-DEC-95            
+
+ 
+SQL> SELECT *FROM BORROW1929100 WHERE CNAME LIKE '__A%' OR CNAME LIKE '__D%';
+
+LOANN CNAME                BNAME                    AMOUNT                      
+----- -------------------- -------------------- ----------                      
+260   MADHURI              CHANDNI                    2000                      
+269   PRAMOD               MGROAD                     8000                      
+
+SQL> SELECT *FROM BORROW1929100 WHERE AMOUNT NOT BETWEEN 2000 AND 8000;
+
+LOANN CNAME                BNAME                    AMOUNT                      
+----- -------------------- -------------------- ----------                      
+200   ANIL                 VRCE                       1000                      
+
+
+
+SQL> SELECT DISTINCT *FROM DEPOSIT1929100;
+
+ACTNO CNAME                BNAME                    AMOUNT ADATE                
+----- -------------------- -------------------- ---------- ---------            
+103   MADHURI              CHANDNI                    1200 17-DEC-95            
+104   PRAMOD               MGROAD                     3000 27-MAR-97            
+100   ANIL                 VRCE                       1000 01-MAR-95            
+102   RAHUL                KAROLBAGH                  3500 17-NOV-95            
+105   SANDIP               KAROLBAGH                  2000 31-MAR-96            
+101   SUNIL                MGROAD                     5000 04-JAN-96            
+
+6 rows selected.
+
+SQL> UPDATE DEPOSIT1929100 SET AMOUNT = AMOUNT/10 WHERE BNAME='VRCE';
+
+1 row updated.
+
+SQL> UPDATE DEPOSIT1929100 SET AMOUNT = AMOUNT/10 WHERE BNAME='VRCE' AND CNAME='ANIL';
+
+1 row updated.
+
+SQL> CREATE TABLE STUDENT1929100(NAME VARCHAR(20),ROLL_NO NUMBER(10),BRANCH VARCHAR(20),CITY VARCHAR(20));
+
+Table created.
+
+SQL> INSERT INTO STUDENT1929100 VALUES('VIJAYA',150,'CSE','CHENNAI');
+
+1 row created.
+
+SQL> INSERT INTO STUDENT1929100 VALUES('SITA',202,'ETC','KOLKATA');
+
+1 row created.
+
+SQL> INSERT INTO STUDENT1929100 VALUES('RAVI',300,'EEE','DELHI');
+
+1 row created.
+
+SQL> INSERT INTO STUDENT1929100 VALUES('BASU',165,'ETC','CHENNAI');
+
+1 row created.
+
+SQL> INSERT INTO STUDENT1929100 VALUES('RASHMI',107,'ETC','RKL');
+
+1 row created.
+
+SQL> INSERT INTO STUDENT1929100 VALUES('KARAN',111,'CSE','CTC');
+
+1 row created.
+
+SQL> INSERT INTO STUDENT1929100 VALUES('KARAN',117,'BME','BBSR');
+
+1 row created.
+
+SQL> COMMIT;
+
+Commit complete.
+                                                                  
+
+SQL> SELECT BRANCH,COUNT(*) FROM STUDENT1929100 GROUP BY BRANCH;
+
+BRANCH                 COUNT(*)                                                 
+-------------------- ----------                                                 
+EEE                           1                                                 
+ETC                           3                                                 
+CSE                           2                                                 
+BME                           1                                                 
+
+
+SQL> SELECT BRANCH,COUNT(BRANCH) FROM STUDENT1929100 WHERE BRANCH LIKE 'E%' GROUP BY BRANCH;
+
+BRANCH               COUNT(BRANCH)                                              
+-------------------- -------------                                              
+EEE                              1                                              
+ETC                              3                                              
+
+SQL> ALTER TABLE STUDENT1929100 ADD(MARKS NUMBER(3));
+
+Table altered.
+
+
+
+SQL> ALTER TABLE STUDENT1929100 MODIFY(NAME VARCHAR(25));
+
+Table altered.
+
+SQL> DESCRIBE STUDENT1929100;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ NAME                                               VARCHAR2(25)
+ ROLL_NO                                            NUMBER(10)
+ BRANCH                                             VARCHAR2(20)
+ CITY                                               VARCHAR2(20)
+ MARKS                                              NUMBER(3)
+
+
+
+SQL> DELETE FROM STUDENT1929100 WHERE BRANCH='ETC';
+
+3 rows deleted.
+
+SQL> SELECT *FROM STUDENT1929100;
+
+NAME                         ROLL_NO BRANCH               CITY                  
+------------------------- ---------- -------------------- --------------------  
+     MARKS                                                                      
+----------                                                                      
+VIJAYA                           150 CSE                  CHENNAI               
+                                                                                
+                                                                                
+RAVI                             300 EEE                  DELHI                 
+                                                                                
+                                                                                
+KARAN                            111 CSE                  CTC                   
+                                                                                
+                                                                                
+
+NAME                         ROLL_NO BRANCH               CITY                  
+------------------------- ---------- -------------------- --------------------  
+     MARKS                                                                      
+----------                                                                      
+KARAN                            117 BME                  BBSR                  
+                                                                                
+                                                                                
+
+
+
+
+SQL> RENAME STUDENT1929100 TO STUDENTINFORMATION;
+
+Table renamed.
+ 
+
+
+SQL> DELETE STUDENTINFORMATION;
+
+4 rows deleted.
+
+SQL> DROP TABLE STUDENTINFORMATION;
+
+Table dropped.
+
+SQL> SPOOL OUT;
+

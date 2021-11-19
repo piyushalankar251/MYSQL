@@ -1,0 +1,62 @@
+SQL> SELECT *FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+BORROW1929100                  TABLE                                            
+BRANCH1929100                  TABLE                                            
+CUSTOMER1929100                TABLE                                            
+DEPOSIT1929100                 TABLE                                            
+
+SQL> DESCRIBE BORROW1929100;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ LOANNO                                             VARCHAR2(5)
+ CNAME                                              VARCHAR2(20)
+ BNAME                                              VARCHAR2(20)
+ AMOUNT                                             NUMBER(8,2)
+
+SQL> SELECT *FROM BORROW1929100;
+
+LOANN CNAME                BNAME                    AMOUNT                      
+----- -------------------- -------------------- ----------                      
+200   ANIL                 VRCE                       1000                      
+256   RAHUL                KAROLBAGH                  5000                      
+298   SUNIL                MGROAD                     3000                      
+260   MADHURI              CHANDNI                    2000                      
+269   PRAMOD               MGROAD                     8000                      
+
+SQL> DESCRIBE BRANCH1929100;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ BNAME                                              VARCHAR2(20)
+ CITY                                               VARCHAR2(20)
+
+SQL> SELECT *FROM BRANCH1929100;
+
+BNAME                CITY                                                       
+-------------------- --------------------                                       
+CHANDNI              DELHI                                                      
+MGROAD               BANGLORE                                                   
+
+SQL> DESCRIBE DEPOSIT1929100;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ACTNO                                              VARCHAR2(5)
+ CNAME                                              VARCHAR2(20)
+ BNAME                                              VARCHAR2(20)
+ AMOUNT                                             NUMBER(8,2)
+
+SQL> SELECT *FROM DEPOSIT1929100;
+
+ACTNO CNAME                BNAME                    AMOUNT                      
+----- -------------------- -------------------- ----------                      
+100   ANIL                 VRCE                       1000                      
+101   SUNIL                MGROAD                     5000                      
+102   RAHUL                KAR4OLBAGH                 3500                      
+104   MADHURI              CHANDNI                    1200                      
+103   PRAMOD               MGROAD                     3000                      
+105   SANDIP               KAROLBAGH                  2000                      
+
+6 rows selected.
+
+SQL> SPOOL OFF;
